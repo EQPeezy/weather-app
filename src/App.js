@@ -10,6 +10,7 @@ export default class App extends Component {
   state = {
     temperature: undefined,
     city: undefined,
+    zip: undefined,
     country: undefined,
     humidity: undefined,
     description: undefined,
@@ -28,15 +29,16 @@ export default class App extends Component {
     const API_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}id=524901&APPID=${API_key}`
     );
-
+   
     // the .json() portion, converts whatever is returned into API_call into readable
     // JS to be displayed within the component --> stored in the constant "data"
     const data = await API_call.json();
-
+    
     if (city && country) {
       this.setState({
         temperature: data.main.temp,
         city: data.name,
+        zip: data.sys.id,
         country: data.sys.country,
         humidity: data.main.humidity,
         description: data.weather[0].description,

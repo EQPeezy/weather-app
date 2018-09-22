@@ -53,6 +53,7 @@ body {
   height: 90vh;
   padding-top: 100px;
   padding-left: 50px;
+  position: center;
 }
 
 input[type="text"] {
